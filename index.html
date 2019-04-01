@@ -7,126 +7,61 @@
 <h1>Hello my friend!</h1>
 
 <script type="text/javascript">
-	//task 3
-	var a = +prompt("Введите значение a: ");
-	var b = +prompt("Введите значение b: ");
-	var x;
-	if (a >= 0 && b >= 0) {
-		x = a - b;
-	} else if (a < 0 && b < 0) {
-		x = a * b;
-	} else {
-		x = a + b;
+	
+
+	//task 1
+	function simpleNum (num) {
+		var count = 2;
+		while(count < num) {
+			if(num % count === 0) {
+				return false;
+			}
+			count++;
+		}
+		return true;
 	}
-	console.log (x);
 
-	//task 4
-	var y = +prompt("Введите значение y: ");
-	switch (y){
-		case 0:
-		console.log(y++);
-		case 1:
-		console.log(y++);
-		case 2:
-		console.log(y++);
-		case 3:
-		console.log(y++);
-		case 4:
-		console.log(y++);
-		case 5:
-		console.log(y++);
-		case 6:
-		console.log(y++);
-		case 7:
-		console.log(y++);
-		case 8:
-		console.log(y++);
-		case 9:
-		console.log(y++);
-		case 10:
-		console.log(y++);
-		case 11:
-		console.log(y++);
-		case 12:
-		console.log(y++);
-		case 13:
-		console.log(y++);
-		case 14:
-		console.log(y++);
-		case 15:
-		console.log(y);
-		break;
-		default:
-		console.log('Error: y должно быть от 0 до 15');
-		break;
+	var arr = new Array();
+    var i = 2;
+    while (i < 100) {
+    	if(simpleNum(i)){
+    		arr.push(i);
+    		
+    	}i++;
+
+    }console.log(arr);
+
+    //task 2
+    var pricearr = [1024, 200, 560];
+
+	function arraySum(array){	
+		for(var i = 0; i < array.length; i++){
+			sum += array[i];
 		}
+			return sum;
+	}
 
-        //task 5
-		var w = +prompt("Введите значение w: ");
-		var z = +prompt("Введите значение z: ");
-		
-		function plus(w, z) {
-    		return w + z;
-		}
+	var sum = 0;
+	var sumpricearr = arraySum(pricearr);
+	console.log(sumpricearr);
 
-		function minus(w, z) {
-    		return w - b;
-		}
+	//task 3
+    var namearr = ["pen", "pencil", "marker"];
+    var pricearr2 = [102, 120, 160];
+    var sum = 0;
+    var sumpricearr2 = arraySum(pricearr2);
+    console.log(sumpricearr2);
 
-		function div (w, z) {
-    		return w / z;
-		}
+    //task 4
+    for (var i = 0; i <= 9; console.log(i++)){} 
 
-		function mult (w, z) {
-    		return w * z;
-		}
-		console.log(plus(w, z));
-		console.log(minus(w, z));
-		console.log(div(w, z));
-		console.log(mult(w, z));
+    //task 5
+    var pir = "";
+    for (var a = 0; a <= 20; a++){
+    	pir += "x";
+    	console.log(pir);
+    }
 
-		//task 6
-		/*var w = +prompt("Введите значение w: ");
-		var z = +prompt("Введите значение z: ");*/
-		var operation = +prompt("Введите номер операции, где: 1- сложение, 2 - вычитание, 3- умножение, 4 - деление: ");
-
-		function mathOperation(arg1, arg2, operation){
-			switch(operation){
-				case 1:
-				return plus(arg1, arg2);
-				case 2:
-				return minus(arg1, arg2);
-				case 3:
-				return div(arg1, arg2);
-				case 4:
-				return mult(arg1, arg2);
-				default:
-				return 'Вы можете использовать следующие операции: 1- сложение, 2 - вычитание, 3- умножение, 4 - деление';
-			}
-		}
-		console.log(mathOperation(w, z, operation));
-
-		//task 7
-		console.log(null > 0); // false
-		console.log(null == 0); // false
-		console.log(null >= 0); // true - Если null < 0 принимает значение false, то null >= 0 принимает значение true
-		console.log(null < 0); // false
-		console.log(null == 0); // false
-		console.log(null <= 0); // true - Если null > 0 принимает значение false, то null <= 0 принимает значение true
-
-		//task 8
-		var value = +prompt("Введите число: ");
-		var power = +prompt("Введите степень числа: ");
-		
-		function exponentiating(val, pow) {
-			if (pow != 1) {
-				return val *= exponentiating(val,pow - 1);
-				
-			} else{
-				return val;
-			}
-		}
-		console.log(exponentiating(value, power)); 
 </script>	
 </body>
 </html>
