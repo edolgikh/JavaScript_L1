@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>Hello my friend!</h1>
+
+<script type="text/javascript">
+	
+
+	//task 1
+	function simpleNum (num) {
+		var count = 2;
+		while(count < num) {
+			if(num % count === 0) {
+				return false;
+			}
+			count++;
+		}
+		return true;
+	}
+
+	var arr = new Array();
+    var i = 2;
+    while (i < 100) {
+    	if(simpleNum(i)){
+    		arr.push(i);
+    		
+    	}i++;
+
+    }console.log(arr);
+
+    //task 2
+    var pricearr = [1024, 200, 560];
+
+	function arraySum(array){	
+		for(var i = 0; i < array.length; i++){
+			sum += array[i];
+		}
+			return sum;
+	}
+
+	var sum = 0;
+	var sumpricearr = arraySum(pricearr);
+	console.log(sumpricearr);
+
+	//task 3
+    var namearr = ["pen", "pencil", "marker"];
+    var pricearr2 = [102, 120, 160];
+    var sum = 0;
+    var sumpricearr2 = arraySum(pricearr2);
+    console.log(sumpricearr2);
+
+    //task 4
+    for (var i = 0; i <= 9; console.log(i++)){} 
+
+    //task 5
+    var pir = "";
+    for (var a = 0; a <= 20; a++){
+    	pir += "x";
+    	console.log(pir);
+    }
+
+</script>	
+</body>
+</html>
