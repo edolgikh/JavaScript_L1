@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Hello my friend!</h1>
+
+	<script type="text/javascript">
+        //task 1
+        
+        function createobject (num) {
+        	var objectnum = {
+                units: null,
+                tens: null,
+                hundreds: null,
+            };
+
+            if (num < 10){
+            	objectnum.units = num;
+            }else if (num >= 10 && num < 100) {
+            	objectnum.units = num % 10;
+            	objectnum.tens = Math.trunc(num/10);
+
+            }else if (num >= 100 && num < 1000) {
+            	objectnum.units = num % 10;;
+            	objectnum.tens = Math.trunc(num/10 % 10);
+            	objectnum.hundreds = Math.trunc(num/100);
+
+            } else{
+            	console.log('Нужно ввести число в диапазоне 0 - 999');
+            }
+            console.log(objectnum);
+        }
+
+        var a = +prompt("Введите число: ");
+        createobject (a);
+
+        //task 2
+		var questions = [
+			{
+				number: 1,
+				text: 'Какой город является столицей Российской Федерации?',
+				answers: ['Москва', 'Лондон', 'Калининград', 'Париж'],
+				correct: 1
+
+			},
+
+			{
+				number: 2,
+				text: 'В каком российском городе можно каждый год любоваться северным сиянием?',
+				answers: ['Сочи', 'Мурманск', 'Калининград', 'Париж'],
+				correct: 2
+
+			},
+			
+			{
+				number: 3,
+				text: 'В каком городе нет метрополитена?',
+				answers: ['Лондон', 'Москва', 'Милан', 'Тагил'],
+				correct: 4
+
+			},
+			
+			{
+				number: 4,
+				text: 'В каком городе жил Карлсон?',
+				answers: ['Лондон', 'Москва', 'Стокгольм', 'Рим'],
+				correct: 3
+
+			},
+			
+		];
+		console.log(questions);
+
+		var game = function (questions) {
+			let play = true;
+			let round = 0;
+			while (play == true && round < questions.length) {
+				let quest = generateQuestion (questions, round);
+				let answer = prompt (quest.qText);
+				play = check (answer, round);
+				round++;
+			}
+		}; 
+
+		var generateQuestion = function (mas, qNumber) {
+			let answers = '';
+			for (let i = 0; i < 4; i++) {
+				answers = answers + (i + 1) + ' - ' + mas[qNumber].answers[i] + '\n';
+			}
+
+			let text = mas[qNumber].text + '\n' + answers + 'Введите правильный ответ';
+
+			let right = mas[qNumber].correct;
+			return {
+				qText: text,
+				right: right
+			};
+		};
+
+		var check = function (answer, round) {
+			if (answer == questions[round].correct) {
+				alert('Правильно!');
+				return true;
+			} else {
+				alert('Неправильно!');
+				return false;
+			}
+		};
+		game(questions);
+	</script>
+</body>
+</html>
