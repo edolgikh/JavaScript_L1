@@ -2,113 +2,140 @@
 <html>
 <head>
 	<title></title>
+	 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<h1>Hello my friend!</h1>
+	<div class="conteiner">
+	<div class="ticketconteiner">
+		<h3 class="ticketheadlineone">Задание № 1</h3>
+		<p class="ticketxt">Есть кнопка button рядом с ней есть текст (Hello) необходимо при нажатии на кнопку поменять текст кнопки на (Привет)</p>
+		<h4 class="ticketheadlinetwo">Решение</h4>
+		<button class="ticketbutton" id="clicker_1">Hello</button>
+	</div>
+	<hr>
+	<div class="ticketconteiner">
+		<h3 class="ticketheadlineone">Задание № 2</h3>
+		<p class="ticketxt">Есть кнопка button рядом с ней есть тэг b (Hello) необходимо при нажатии на кнопку поменять тэг на h3</p>
+		<h4 class="ticketheadlinetwo">Решение</h4>
+		<button class="ticketbutton" onclick="changeTag()">click me</button>
+		<b id="clicker_2">Hello</b>
+	</div>
+	<hr>
+	<div class="ticketconteiner">
+		<h3 class="ticketheadlineone">Задание № 3</h3>
+		<p class="ticketxt">Поменяйте содержимое списка на текст list их порядковый номер в коде.</p>
+		<h4 class="ticketheadlinetwo">Решение</h4>
+		<h2>Заголовок.</h2>
+      <ul>
+         <li>list</li>
+         <li>list</li>
+         <li>list</li>
+         <li>list</li>
+      </ul>
+      <button class="ticketbutton" onclick="changelist()">change list</button>
+	</div>
+   <hr>
+   <div class="ticketconteiner">
+      <h3 class="ticketheadlineone">Задание № 4</h3>
+      <p class="ticketxt">Создать калькулятор</p>
+      <h4 class="ticketheadlinetwo">Решение</h4>
+      <input type="text" id="clicker_4_1"> <span id="clicker_4_3">?</span><input type="text" id="clicker_4_2"> = <span id="clicker_4_4">результат</span><br>
+      <button class="culbutton" onclick="countresult(1)">+</button>
+      <button class="culbutton" onclick="countresult(2)">-</button>
+      <button class="culbutton" onclick="countresult(3)">*</button>
+      <button class="culbutton" onclick="countresult(4)">/</button>
+   </div>
+   <hr>
+   <div class="ticketconteiner">
+      <h3 class="ticketheadlineone">Задание № 5</h3>
+      <p class="ticketxt">Дан элемент ul, а в нем li #list. Вставьте перед элементом #list новую li с текстом 'Первый элемент списка</p>
+      <h4 class="ticketheadlinetwo">Решение</h4>
+      <ul id="clicker_5">
+         <li>#list</li>
+      </ul>
+      <button class="ticketbutton" onclick="createelem()">create first element</button>
+   </div>
+	</div>
 
-	<script type="text/javascript">
-        //task 1
-        
-        function createobject (num) {
-        	var objectnum = {
-                units: null,
-                tens: null,
-                hundreds: null,
-            };
 
-            if (num < 10){
-            	objectnum.units = num;
-            }else if (num >= 10 && num < 100) {
-            	objectnum.units = num % 10;
-            	objectnum.tens = Math.trunc(num/10);
 
-            }else if (num >= 100 && num < 1000) {
-            	objectnum.units = num % 10;;
-            	objectnum.tens = Math.trunc(num/10 % 10);
-            	objectnum.hundreds = Math.trunc(num/100);
+<script type="text/javascript">
 
-            } else{
-            	console.log('Нужно ввести число в диапазоне 0 - 999');
-            }
-            console.log(objectnum);
-        }
+    //1
+	var eventFunction = function(evt) {
+		
+		if (evt.target.innerText == 'Hello') {
+			evt.target.innerText = 'Привет';
+		} else{
+         evt.target.innerText = 'Hello'; 
+         }
+         
+    }
+    document.querySelector('#clicker_1').addEventListener('click', eventFunction);
 
-        var a = +prompt("Введите число: ");
-        createobject (a);
+    //2
+    function changeTag() {
 
-        //task 2
-		var questions = [
-			{
-				number: 1,
-				text: 'Какой город является столицей Российской Федерации?',
-				answers: ['Москва', 'Лондон', 'Калининград', 'Париж'],
-				correct: 1
+    	let elem = document.getElementById("clicker_2");
+    
+    	if (elem.tagName == 'B') {
+			elem.outerHTML = '<h3 id="clicker_2">'+elem.innerText +'</h3>'; 
+		} else{
+         elem.outerHTML = '<b id="clicker_2">'+elem.innerText +'</b>'; 
+         }
+    }
 
-			},
+    //3
+   function changelist() {
+      
+      let elem = document.getElementsByTagName('li');
+      for (let i = 0; i < elem.length; i++) {
+         elem[i].innerHTML = "list " +(i+1);
+      }
+      
+    }
 
-			{
-				number: 2,
-				text: 'В каком российском городе можно каждый год любоваться северным сиянием?',
-				answers: ['Сочи', 'Мурманск', 'Калининград', 'Париж'],
-				correct: 2
+   //4
+   function countresult(oper) {
+     
+      let a = +document.getElementById("clicker_4_1").value;
+      let b = +document.getElementById("clicker_4_2").value;
+      let elemoper = document.getElementById("clicker_4_3");
+      let elemresult = document.getElementById("clicker_4_4");
+     
+     if (oper == 1) {
+      elemoper.innerText = "+";
+      elemresult.innerText = a+b;
+     } else if (oper == 2){
+      elemoper.innerText = "-";
+      elemresult.innerText = a-b;
+     }else if (oper == 3){
+      elemoper.innerText = "*";
+      elemresult.innerText = a*b;
+     }else if (oper == 4){
+      elemoper.innerText = "/";
+      elemresult.innerText = a/b;
+     }
+      
+    }
+    
+     //5
+   function createelem() {
+      
+      let elem = document.getElementById("clicker_5");
+console.log(elem.children[0].innerHTML);
+      if (elem.children[0].innerHTML == 'first element') {
 
-			},
-			
-			{
-				number: 3,
-				text: 'В каком городе нет метрополитена?',
-				answers: ['Лондон', 'Москва', 'Милан', 'Тагил'],
-				correct: 4
-
-			},
-			
-			{
-				number: 4,
-				text: 'В каком городе жил Карлсон?',
-				answers: ['Лондон', 'Москва', 'Стокгольм', 'Рим'],
-				correct: 3
-
-			},
-			
-		];
-		console.log(questions);
-
-		var game = function (questions) {
-			let play = true;
-			let round = 0;
-			while (play == true && round < questions.length) {
-				let quest = generateQuestion (questions, round);
-				let answer = prompt (quest.qText);
-				play = check (answer, round);
-				round++;
-			}
-		}; 
-
-		var generateQuestion = function (mas, qNumber) {
-			let answers = '';
-			for (let i = 0; i < 4; i++) {
-				answers = answers + (i + 1) + ' - ' + mas[qNumber].answers[i] + '\n';
-			}
-
-			let text = mas[qNumber].text + '\n' + answers + 'Введите правильный ответ';
-
-			let right = mas[qNumber].correct;
-			return {
-				qText: text,
-				right: right
-			};
-		};
-
-		var check = function (answer, round) {
-			if (answer == questions[round].correct) {
-				alert('Правильно!');
-				return true;
-			} else {
-				alert('Неправильно!');
-				return false;
-			}
-		};
-		game(questions);
-	</script>
+         newElement = document.createElement("li");
+         newElement.innerHTML = "#list";
+         elem.insertBefore(newElement, elem.children[0].nextSibling);
+      } else {
+          newElement = document.createElement("li");
+          newElement.innerHTML = "first element";
+          elem.insertBefore(newElement, elem.children[0]);
+      }
+      
+    }
+</script>
 </body>
 </html>
