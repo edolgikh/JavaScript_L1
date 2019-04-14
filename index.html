@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	 <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="conteiner">
+	<div class="ticketconteiner">
+		<h3 class="ticketheadlineone">Задание № 1</h3>
+		<p class="ticketxt"> Реализовать модуль корзины.</p>
+		<h4 class="ticketheadlinetwo">Решение</h4>
+		
+		<div class="conteinerbox">
+			<div class="item_box">
+				<h4 class="item_title">Samsung Galaxy S10</h4>
+				<p>Цена: <span class="item_price">200</span>$</p>
+				<button class="add_item" id="buy_1">Купить</button>
+			</div>
+			<div class="item_box">
+				<h4 class="item_title">LG Optimus G</h4>
+				<p>Цена: <span class="item_price">100</span>$</p>
+				<button class="add_item" id="buy_2">Купить</button>
+			</div>
+			<div class="item_box">
+				<h4 class="item_title">Nokia 2110</h4>
+				<p>Цена: <span class="item_price">50</span>$</p>
+				<button class="add_item" id="buy_3">Купить</button>
+			</div>
+		</div>
+		<div class="box_curt"> 
+			<div id="cart_content"><span class="box_title">Корзина пуста</span></div>
+			<span>Стоимость корзины: <span id="cart_fullprice">0</span></span>
+		</div>
+	</div>
+	<hr>
+	<div class="ticketconteiner">
+		<h3 class="ticketheadlineone">Задание № 2</h3>
+		<p class="ticketxt">Работа с галереей</p>
+		<h4 class="ticketheadlinetwo">Решение <a href="gallery.html" target="_blank">по ссылке</a></h4>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+	var sumcurt = new Array();
+	var arrcurt = new Array();
+	var totalItems = '';
+
+	var arraySum = function (array){
+		var sum = 0;	
+		for(var i = 0; i < array.length; i++){
+			sum += array[i][1];
+		}
+			return sum; 
+	}
+   
+   function fillcurt(array){
+		
+		totalItems = '<table class="shopping_list"><tr><th>Наименование</th><th>Цена</th></tr>';
+		for(var i = 0; i < array.length; i++){
+			console.log(array[i][0]);
+			totalItems += '<tr class="shopping_list_line"><th>'+array[i][0]+'</th><th>'+array[i][1]+'</th></tr>';	
+		}
+		
+		totalItems += '</table>';
+		return totalItems; 
+	}
+
+	function addToCart(evt) {
+	
+		parentBox = evt.target.parentNode;
+		itemTitle = parentBox.querySelector('.item_title').innerHTML, // название товара
+      itemPrice = +parentBox.querySelector('.item_price').innerHTML; // стоимость товара
+      curtcont = document.querySelector('#cart_content');
+      
+      arrcurt.push([itemTitle, itemPrice]);
+      curtcont.innerHTML = fillcurt(arrcurt);
+
+      document.querySelector('#cart_fullprice').innerHTML = arraySum(arrcurt); // общая стоимость товаров
+   
+	}
+
+	document.querySelector('#buy_1').addEventListener('click', addToCart);
+	document.querySelector('#buy_2').addEventListener('click', addToCart);
+	document.querySelector('#buy_3').addEventListener('click', addToCart);
+	
+
+</script>
+</body>
+</html>
