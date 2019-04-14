@@ -43,3 +43,48 @@ hr{
     min-height: 33px;
     font-weight:bold
 }
+.item_box{
+    margin-left: 20px; 
+}
+.item_title{
+    margin-bottom: 0;
+}
+.add_item{
+    border-radius: 3px;
+    width: 70px;
+    min-height: 23px;
+    border-color: aliceblue;
+    background-color:aliceblue;
+
+}
+.conteinerbox{
+    float: left;
+
+}
+.box_curt{
+    margin-top: 22px;
+    margin-left: 50px;
+    float: left;
+}
+.box_title{
+    position: absolute;
+    top: 50%;
+    left: 35%;
+}
+#cart_content{
+    position: relative;
+    width: 400px;
+    min-height: 100px;
+    background-color: aliceblue;
+}
+#cart_fullprice{
+    font-weight:bold;
+}
+.shopping_list{
+    width: 400px;
+    color: darkblue;
+}
+.shopping_list_line{
+    color: cornflowerblue;
+
+}
