@@ -38,6 +38,9 @@ var switchTool = function (el) {
 	} else if (el.id == 'line') {
 		//console.log ('line');
 		return 'line'
+	}else if (el.id == 'square') {
+		//console.log ('line');
+		return 'square'
 	}
 };
 
@@ -53,7 +56,7 @@ var clicker = function (evt) {
 		//console.log(system);
 		renderSystem (system, 'currentTool', switchTool (evt.target));
 	} else if (evt.target.id == 'sizeSelect') {
-		renderSystem (system, 'brushSize', switchSizeColor(evt.target));
+		
 	} else if (evt.target.id == 'color') {
 		//renderSystem (system, 'currentColor', switchSizeColor(evt.target));
 		//console.log ("12");
@@ -62,6 +65,10 @@ var clicker = function (evt) {
 
 var changecolor = function (evt) {
 	renderSystem (system, 'currentColor', switchSizeColor(evt.target));
+}
+
+var changesize = function (evt) {
+	renderSystem (system, 'brushSize', switchSizeColor(evt.target));
 }
 
 var startDraw = function (evt) {
@@ -73,6 +80,8 @@ var startDraw = function (evt) {
 		eraser (evt); 
 	} else if (system.currentTool == 'line') {
 		drawline (evt); 
+	} else if (system.currentTool == 'square') {
+		drawsquare (evt); 
 	}
 	
 };
@@ -82,10 +91,12 @@ var endDraw = function (evt) {
 };
 
 var draw = function (evt) {
+	ctx.beginPath();
 	canvas.onmousemove = function (evt) {
 		ctx.fillStyle = system.currentColor;
 		ctx.fillRect (xCoord.innerText, yCoord.innerText, system.brushSize, system.brushSize);
 	}
+	ctx.closePath(); 
 };
 
 var clearall = function (evt) {
@@ -114,10 +125,26 @@ var drawline = function (evt) {
 	ctx.closePath(); 
 };
 
+var drawsquare = function (evt) {
+	ctx.beginPath();
+	let x=xCoord.innerText;
+	let y=yCoord.innerText;
+
+	canvas.onclick = function () {
+		let w = event.offsetX - x;
+		let h = event.offsetY - y;
+		ctx.strokeStyle  = system.currentColor;
+		ctx.lineWidth = system.brushSize;
+		ctx.strokeRect(x, y, w, h);
+	}
+	ctx.closePath(); 
+};
+
 canvas.addEventListener ('mousemove', getCoordinates);
 canvas.addEventListener ('mousedown', startDraw);
 canvas.addEventListener ('mouseup', endDraw);
 document.querySelector('#color').addEventListener('change', changecolor);
+document.querySelector('#sizeSelect').addEventListener('change', changesize);
 document.querySelector('#clearall').addEventListener('click', clearall);
 
 window.addEventListener ('click', clicker);
